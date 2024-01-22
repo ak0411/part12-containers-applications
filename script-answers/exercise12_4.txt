@@ -1,0 +1,7 @@
+apt install -y curl
+
+curl -sL https://deb.nodesource.com/setup_21.x | bash
+
+apt-get install nodejs -y
+
+node /usr/src/app/index.js
