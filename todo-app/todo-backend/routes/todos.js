@@ -20,9 +20,13 @@ router.post('/', async (req, res) => {
 const singleRouter = express.Router();
 
 const findByIdMiddleware = async (req, res, next) => {
-  const { id } = req.params
-  req.todo = await Todo.findById(id)
-  if (!req.todo) return res.sendStatus(404)
+  try {
+    const { id } = req.params
+    req.todo = await Todo.findById(id)
+    if (!req.todo) return res.sendStatus(404)
+  } catch (error) {
+    return res.sendStatus(500)
+  }
 
   next()
 }
