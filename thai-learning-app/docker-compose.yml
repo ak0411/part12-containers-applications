@@ -1,0 +1,17 @@
+services:
+  app:
+    image: thai-learning-frontend
+    ports:
+      - 8080:80
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: thai-learning-frontend
+  server:
+    image: thai-learning-backend
+    ports:
+      - 3000:3000
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: thai-learning-backend

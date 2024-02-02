@@ -48,11 +48,9 @@ function App() {
       }
       {currentWord && <WordCard word={currentWord} />}
       <div className="mt-4">
+        <h4>Word History</h4>
         {wordHistory.length > 0 &&
-          <>
-            <h4>History</h4>
-            <button className="btn btn-danger ml-5" onClick={handleClearHistory}>Clear History</button>
-          </>
+          <button className="btn btn-danger ml-5" onClick={handleClearHistory}>Clear History</button>
         }
         {wordHistory.map((word, index) => (
           <WordCard key={index} word={word} />
