@@ -1,0 +1,24 @@
+services:
+  app:
+    image: thai-learning-frontend-dev
+    ports:
+      - 3001:3000
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    environment:
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./frontend:/usr/src/app
+    container_name: thai-learning-frontend-dev
+  server:
+    image: thai-learning-backend-dev
+    ports:
+      - 3000:3000
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    command: ['npm', 'run', 'dev', '--', '--legacy-watch']
+    volumes:
+      - ./backend:/usr/src/server
+    container_name: thai-learning-backend-dev
